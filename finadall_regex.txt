@@ -1,0 +1,76 @@
+REPL:
+Last login: Tue Apr 15 20:20:08 on ttys007
+(base) amakki@As-MacBook-Pro ~ % cd /Users/amakki/Documents/Coding-Design/GitHub/PythonProject/regex-practice-folder
+(base) amakki@As-MacBook-Pro regex-practice-folder % conda env list
+
+# conda environments:
+#
+base                 * /Users/amakki/miniconda3
+boardgame_conda_v3     /Users/amakki/miniconda3/envs/boardgame_conda_v3
+html-conda-env         /Users/amakki/miniconda3/envs/html-conda-env
+maks-calendar-venv     /Users/amakki/miniconda3/envs/maks-calendar-venv
+pyboardgame_conda_v2   /Users/amakki/miniconda3/envs/pyboardgame_conda_v2
+scraping-conda         /Users/amakki/miniconda3/envs/scraping-conda
+
+(base) amakki@As-MacBook-Pro regex-practice-folder % conda activate scraping-conda
+(scraping-conda) amakki@As-MacBook-Pro regex-practice-folder % pip list
+Package            Version
+------------------ -----------
+beautifulsoup4     4.11.1
+certifi            2022.9.24
+charset-normalizer 2.1.1
+idna               3.4
+lxml               4.9.1
+MechanicalSoup     1.2.0
+pip                25.0
+requests           2.28.1
+setuptools         75.8.0
+soupsieve          2.3.2.post1
+urllib3            1.26.12
+wheel              0.45.1
+(scraping-conda) amakki@As-MacBook-Pro regex-practice-folder % conda install re
+Channels:
+ - defaults
+Platform: osx-64
+Collecting package metadata (repodata.json): done
+Solving environment: failed
+
+PackagesNotFoundError: The following packages are not available from current channels:
+
+  - re
+
+Current channels:
+
+  - https://repo.anaconda.com/pkgs/main
+  - https://repo.anaconda.com/pkgs/r
+
+To search for alternate channels that may provide the conda package you're
+looking for, navigate to
+
+    https://anaconda.org
+
+and use the search bar at the top of the page.
+
+
+(scraping-conda) amakki@As-MacBook-Pro regex-practice-folder % python3.9
+Python 3.9.21 (main, Dec 11 2024, 10:23:52) 
+[Clang 14.0.6 ] :: Anaconda, Inc. on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import re
+>>> pattern = re.compile(r'Cat(erpillar|astrophe|ch|egory)')
+>>> match = pattern.search('Catch me if you can. tom hanks and that actor from category caterpillar. Tigers are Cats, doe cat also work or is it a catastrophe?')
+>>> match.group()
+'Catch'
+>>> match.findall()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 're.Match' object has no attribute 'findall'
+>>> import re
+>>> pattern = re.compile(r'\d{3}-\d{3}-\d{4}')
+>>> pattern.findall('cell: 415-555-9999 Work: 212-555-0000')
+['415-555-9999', '212-555-0000']
+>>> 
+>>> import re
+>>> pattern = re.compile(r'(\d{3})-(\d{3})-(\d{4})')
+>>> pattern.findall('Cell: 415-555-9999 Work: 212-555-0000')
+[('415', '555', '
